@@ -88,7 +88,7 @@ public class Sorting {
             int curr = arr[i];
             int prev = i - 1;
 
-            // pushing back elements from sorted array
+            // pushing forward from sorted array
             while (prev >= 0 && arr[prev] >= curr) {
                 arr[prev + 1] = arr[prev];
                 prev--;
