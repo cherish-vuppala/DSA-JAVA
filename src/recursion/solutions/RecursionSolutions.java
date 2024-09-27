@@ -1,9 +1,6 @@
 package recursion.solutions;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class RecursionSolutions {
     public int countSteps(int n) {
@@ -75,4 +72,42 @@ public class RecursionSolutions {
             }
         }
     }
+
+    public List<String> findAllPermutations(String str) {
+        int n = str.length();
+        List<String> list = new ArrayList<>();
+        StringBuffer sb = new StringBuffer();
+        HashSet<Character> set = new HashSet<>();
+        findAllPermutationsHelper(str, set, sb, list);
+        return list;
+    }
+
+    private void findAllPermutationsHelper(String str, HashSet<Character> set, StringBuffer sb, List<String> list) {
+        // Base case: if the StringBuffer length matches the input string length
+        if (sb.length() == str.length()) {
+            list.add(sb.toString());
+            return;
+        }
+
+        // Loop through all characters in the string
+        for (int i = 0; i < str.length(); i++) {
+            char ch = str.charAt(i);
+
+            // Skip the character if it is already used
+            if (set.contains(ch)) continue;
+
+            // Add the character to the StringBuffer and the set
+            sb.append(ch);
+            set.add(ch);
+
+            // Recur to continue building the permutation
+            findAllPermutationsHelper(str, set, sb, list);
+
+            // Backtrack: remove the character from the set and the StringBuffer
+            set.remove(ch);
+            sb.deleteCharAt(sb.length() - 1);
+        }
+    }
+
+
 }

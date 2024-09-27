@@ -15,5 +15,8 @@ public class RecursionQuestions {
                         
             A mapping of digits to letters (just like on the telephone buttons) is given below. Note that 1 does not map to any letters.
             """;
+    String question4 = """
+            Find all permutations of a given string and return them in their sorted order
+            """;
 
 }

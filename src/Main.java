@@ -48,7 +48,10 @@ public class Main {
 //        var n = 3;
 //        var result = String.format("Generate All Strings of length %s: %s", n, recursion.generateAllStrings(n));
 //        System.out.println(result);
-        var list = recursion.letterCombinations("23");
-        System.out.println("list = " + list);
+//        var list = recursion.letterCombinations("23");
+//        System.out.println("list = " + list);
+        var str = "abc";
+        var result = String.format("All permutations of string %s : %s", str, recursion.findAllPermutations(str));
+        System.out.println("result = " + result);
     }
 }
