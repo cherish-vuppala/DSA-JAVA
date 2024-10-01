@@ -1,3 +1,4 @@
+import patterns.Solutions;
 import recursion.solutions.RecursionSolutions;
 import sorting.*;
 
@@ -40,7 +41,7 @@ public class Main {
 //        sorting.sort(arr);
 //        System.out.println(Arrays.toString(arr));
 
-        var recursion = new RecursionSolutions();
+//        var recursion = new RecursionSolutions();
 //        var n = 14;
 //        var result = String.format("recursion.countSteps(%s) = %s", 14, recursion.countSteps(14));
 //        System.out.println(result);
@@ -50,8 +51,10 @@ public class Main {
 //        System.out.println(result);
 //        var list = recursion.letterCombinations("23");
 //        System.out.println("list = " + list);
-        var str = "abc";
-        var result = String.format("All permutations of string %s : %s", str, recursion.findAllPermutations(str));
-        System.out.println("result = " + result);
+//        var str = "abc";
+//        var result = String.format("All permutations of string %s : %s", str, recursion.findAllPermutations(str));
+//        System.out.println("result = " + result);
+        var patterns = new Solutions();
+        patterns.primePattern(5);
     }
 }
