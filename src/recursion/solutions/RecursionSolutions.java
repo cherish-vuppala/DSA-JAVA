@@ -180,6 +180,37 @@ public class RecursionSolutions {
         }
     }
 
+    // permutations approach - 2
+    public static String[] permutationOfString(String input){
+        // Write your code here
+        List<String> list = new ArrayList<>();
+        backtrack(input, new StringBuffer(), list, new HashSet<>());
+        var result = new String[list.size()];
+        var i = 0;
+        for (String str: list) {
+            result[i++] = str;
+        }
+
+        return result;
+    }
+
+    private static void backtrack(String input, StringBuffer sb, List<String> list, Set<String> set) {
+        if (input.length() == 0) {
+            var str = sb.toString();
+            if (!set.contains(str))
+                list.add(new String(str));
+            return;
+        }
+
+        for (char c : input.toCharArray()) {
+            sb.append(c);
+            int idx = input.indexOf(c);
+            String newStr = input.substring(0, idx) + input.substring(idx + 1);
+            backtrack(newStr, sb, list, set);
+            sb.deleteCharAt(sb.length() -1);
+        }
+
+    }
 
 
 }
