@@ -180,7 +180,7 @@ public class RecursionSolutions {
         }
     }
 
-    // permutations approach - 2
+    // permutations approach - 2 (works for both duplicate characters and unique characters in a string)
     public static String[] permutationOfString(String input){
         // Write your code here
         List<String> list = new ArrayList<>();
