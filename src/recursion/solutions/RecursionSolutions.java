@@ -109,5 +109,34 @@ public class RecursionSolutions {
         }
     }
 
+    public List<List<Integer>> findAllSubsetsWhoseSumIsK(int[] arr, int target) {
+        List<List<Integer>> list = new ArrayList<>();
+        findAllSubsetsWhoseSumIsKHelper(0, 0, target, arr, new ArrayList<>(), list);
+        return list;
+    }
+
+    private void findAllSubsetsWhoseSumIsKHelper(int i, int sum, int target, int[] arr, List<Integer> subset, List<List<Integer>> subsetsList) {
+        if (i == arr.length) {
+            return;
+        }
+
+
+
+        if (sum + arr[i] < target) {
+            subset.add(arr[i]);
+            findAllSubsetsWhoseSumIsKHelper(i + 1, sum + arr[i], target, arr, subset, subsetsList);
+            subset.remove(subset.size() - 1);
+            findAllSubsetsWhoseSumIsKHelper(i + 1, sum, target, arr, subset, subsetsList);
+
+        } else if (sum + arr[i] > target) {
+            findAllSubsetsWhoseSumIsKHelper(i + 1, sum, target, arr, subset, subsetsList);
+        } else {
+            subset.add(arr[i]);
+            subsetsList.add(new ArrayList<>(subset));
+            subset.remove(subset.size() - 1);
+            findAllSubsetsWhoseSumIsKHelper(i + 1, sum, target, arr, subset, subsetsList);
+        }
+    }
+
 
 }

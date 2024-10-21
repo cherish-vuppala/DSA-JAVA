@@ -1,8 +1,5 @@
-import patterns.Solutions;
+//import patterns.Solutions;
 import recursion.solutions.RecursionSolutions;
-import sorting.*;
-
-import java.util.Arrays;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
@@ -41,7 +38,11 @@ public class Main {
 //        sorting.sort(arr);
 //        System.out.println(Arrays.toString(arr));
 
-//        var recursion = new RecursionSolutions();
+        var recursion = new RecursionSolutions();
+        int[] arr = {5, 12, 3, 17, 1, 18, 15, 3, 17 };
+        var target = 6;
+        var list = recursion.findAllSubsetsWhoseSumIsK(arr, target);
+        System.out.println("list = " + list);
 //        var n = 14;
 //        var result = String.format("recursion.countSteps(%s) = %s", 14, recursion.countSteps(14));
 //        System.out.println(result);
@@ -54,7 +55,7 @@ public class Main {
 //        var str = "abc";
 //        var result = String.format("All permutations of string %s : %s", str, recursion.findAllPermutations(str));
 //        System.out.println("result = " + result);
-        var patterns = new Solutions();
-        patterns.primePattern(5);
+//        var patterns = new Solutions();
+//        patterns.primePattern(5);
     }
 }
