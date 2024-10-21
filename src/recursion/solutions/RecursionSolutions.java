@@ -138,5 +138,48 @@ public class RecursionSolutions {
         }
     }
 
+    public String[] getCode(String input) {
+        // This method generates all possible character encodings for a given input string.
+        // It uses a helper method to perform a recursive backtracking approach.
+
+        List<String> list = new ArrayList<>(); // List to store all possible encodings.
+        var sb = new StringBuffer(); // StringBuffer to build the current encoding.
+        getCodesHelper(input, sb, list); // Call helper method to populate the list with encodings.
+
+        var result = new String[list.size()]; // Create a result array of the same size as the list.
+        var i = 0;
+        for (String str : list) {
+            result[i++] = str; // Transfer each encoding from the list into the result array.
+        }
+
+        return result; // Return the array of encoded strings.
+    }
+
+    private void getCodesHelper(String input, StringBuffer sb, List<String> list) {
+        // Base case: if the input is empty, add the current encoding (sb) to the list.
+        if (input.length() == 0) {
+            list.add(new String(sb.toString()));
+            return;
+        }
+
+        // Process the first character as a single digit.
+        char c1 = (char)(input.charAt(0) - '0' + 'a' - 1); // Convert the first character into a letter.
+        sb.append(c1); // Add the converted character to the current encoding.
+        getCodesHelper(input.substring(1), sb, list); // Recurse with the remaining input.
+        sb.deleteCharAt(sb.length() - 1); // Backtrack by removing the last character.
+
+        // Process the first two characters as a double digit, if possible.
+        if (input.length() >= 2) {
+            int num = Integer.parseInt(input.substring(0, 2)); // Get the first two characters as a number.
+            char c2 = (char) (num - 1 + 'a'); // Convert the number into a corresponding letter.
+            if (num >= 10 && num <= 26) { // Only process if the number corresponds to a valid letter.
+                sb.append(c2); // Add the converted character to the current encoding.
+                getCodesHelper(input.substring(2), sb, list); // Recurse with the remaining input after the first two characters.
+                sb.deleteCharAt(sb.length() - 1); // Backtrack by removing the last character.
+            }
+        }
+    }
+
+
 
 }
