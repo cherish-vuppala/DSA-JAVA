@@ -49,12 +49,46 @@ public class DoublyLinkedList {
         head = newNode;
     }
 
+    public void removeLast() {
+
+        if (isEmpty()) return;
+
+        if (head == tail) {
+            // Only one node in the list
+            head = tail = null;
+            return;
+        }
+
+        var secondLastNode = tail.back;
+
+        secondLastNode.next = null;
+        tail.back = null;
+        tail = secondLastNode;
+    }
+
+    public void removeFirst() {
+        if (isEmpty()) return;
+
+        if (head == tail) {
+            // Only one node in the list
+            head = tail = null;
+            return;
+        }
+
+        var secondNode = head.next;
+        secondNode.back = null;
+        head.next = null;
+
+        head = secondNode;
+    }
+
     public boolean isEmpty() {
         return head == null;
     }
 
     @Override
     public String toString() {
+
         StringBuilder sb = new StringBuilder();
 
         var curr = head;
@@ -68,4 +102,6 @@ public class DoublyLinkedList {
 
         return sb.toString();
     }
+
+
 }
