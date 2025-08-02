@@ -1,7 +1,7 @@
 package linkedList;
 
 public class DoublyLinkedList {
-    class Node {
+    private static class Node {
         int data;
         Node next;
         Node back;
